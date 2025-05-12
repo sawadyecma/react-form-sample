@@ -31,7 +31,6 @@ export function Form_02() {
   );
 }
 
-// eslint-disable-next-line react-refresh/only-export-components
 const Checkbox = ({
   checked,
   onChange,
