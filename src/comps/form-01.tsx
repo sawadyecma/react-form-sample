@@ -11,6 +11,7 @@ export function Form_01() {
       example: "",
       exampleRequired: "",
     },
+    mode: "onBlur",
   });
 
   console.log(watch("example")); // you can watch individual input by pass the name of the input
@@ -22,13 +23,16 @@ export function Form_01() {
         alert(JSON.stringify(data));
       })}
     >
+      <p className="text-white">Uncontrolled Component</p>
       <label>Example</label>
       <input {...register("example")} defaultValue="test" />
       <label>ExampleRequired</label>
       <input
         {...register("exampleRequired", { required: true, maxLength: 10 })}
       />
-      {errors.exampleRequired && <p>This field is required</p>}
+      {errors.exampleRequired && (
+        <p className="error-msg">This field is required</p>
+      )}
       <input type="submit" />
     </form>
   );
