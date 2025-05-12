@@ -13,6 +13,7 @@ export function Form_02() {
 
   return (
     <div>
+      <p>Controlled Component</p>
       <form className="form">
         <Controller
           name="isOk"
