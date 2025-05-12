@@ -1,4 +1,4 @@
-import { useForm, Controller } from "react-hook-form";
+import { useForm, Controller, type Control } from "react-hook-form";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -20,8 +20,11 @@ const schema = z.object({
     ),
 });
 
+type IForm = z.infer<typeof schema>;
+type C = Control<IForm>;
+
 export function Form_03() {
-  const { handleSubmit, control, formState } = useForm({
+  const { handleSubmit, control, formState } = useForm<IForm>({
     defaultValues: {
       isOk: false,
     },
@@ -30,6 +33,9 @@ export function Form_03() {
     reValidateMode: "onChange",
   });
 
+  const c: C = control;
+
+  console.log({ c });
   console.log(formState);
 
   const { errors } = formState;
