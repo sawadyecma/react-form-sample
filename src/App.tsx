@@ -2,6 +2,7 @@ import { Form_01 } from "./comps/form-01";
 import { Form_02 } from "./comps/form-02";
 import { Form_03 } from "./comps/form-03";
 import { Form_04 } from "./comps/form-04";
+import { Form_05 } from "./comps/form-05";
 import "./style.css";
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
       <Form_02 />
       <Form_03 />
       <Form_04 />
+      <Form_05 />
     </div>
   );
 }

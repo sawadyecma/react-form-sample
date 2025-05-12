@@ -1,5 +1,5 @@
 import React from "react";
-import { InputModal } from "./input-modal";
+import { InputModal } from "./form-04/input-modal";
 
 export const Form_04 = () => {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -13,13 +13,11 @@ export const Form_04 = () => {
           onClose={() => setIsOpen(false)}
           formProps={[
             {
-              label: "first name",
               rule: {
                 required: "Please enter your first name",
               },
             },
             {
-              label: "last name",
               rule: {
                 required: "Please enter your last name",
               },
