@@ -27,7 +27,12 @@ export function Form_03() {
     },
     resolver: zodResolver(schema),
     mode: "onBlur",
+    reValidateMode: "onChange",
   });
+
+  console.log(formState);
+
+  const { errors } = formState;
 
   return (
     <div>
@@ -40,9 +45,7 @@ export function Form_03() {
             <Checkbox checked={field.value} onChange={field.onChange} />
           )}
         />
-        {formState.errors.isOk && (
-          <p className="error-msg">{formState.errors.isOk.message}</p>
-        )}
+        {errors.isOk && <p className="error-msg">{errors.isOk.message}</p>}
         <Controller
           name="text"
           control={control}
@@ -54,9 +57,7 @@ export function Form_03() {
             />
           )}
         />
-        {formState.errors.text && (
-          <p className="error-msg">{formState.errors.text.message}</p>
-        )}
+        {errors.text && <p className="error-msg">{errors.text.message}</p>}
 
         <Controller
           name="email"
@@ -69,11 +70,10 @@ export function Form_03() {
             />
           )}
         />
-        {formState.errors.email && (
-          <p className="error-msg">{formState.errors.email.message}</p>
-        )}
+        {errors.email && <p className="error-msg">{errors.email.message}</p>}
       </form>
       <button
+        // disabled={!formState.isValid}
         // form tagの外でもsubmitできる
         onClick={handleSubmit((data) => {
           console.log(data);
@@ -89,10 +89,10 @@ const TextField = ({
   value,
   onChange,
   ...props
-}: {
+}: React.InputHTMLAttributes<HTMLInputElement> & {
   value: string;
   onChange: (value: string) => void;
-} & React.InputHTMLAttributes<HTMLInputElement>) => {
+}) => {
   return (
     <input
       {...props}
