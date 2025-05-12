@@ -57,6 +57,7 @@ export function Form_03() {
           control={control}
           render={({ field }) => (
             <TextField
+              placeholder="text"
               {...field}
               value={field.value ?? ""}
               onChange={field.onChange}
@@ -70,6 +71,7 @@ export function Form_03() {
           control={control}
           render={({ field }) => (
             <TextField
+              placeholder="email"
               {...field}
               value={field.value ?? ""}
               onChange={field.onChange}
