@@ -1,33 +1,41 @@
-import { useForm, Controller, type SubmitHandler } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 
 interface IFormInputs {
   isOk: boolean;
 }
 
 export function Form_02() {
-  const { handleSubmit, control, formState, watch } = useForm<IFormInputs>({
+  const { handleSubmit, control, formState } = useForm<IFormInputs>({
     defaultValues: {
       isOk: false,
     },
   });
-  const onSubmit: SubmitHandler<IFormInputs> = (data) => console.log(data);
-  console.log(watch("isOk")); // you can watch individual input by pass the name of the input
 
   return (
-    <form className="form" onSubmit={handleSubmit(onSubmit)}>
-      <Controller
-        name="isOk"
-        control={control}
-        rules={{ required: "Please check it!" }}
-        render={({ field }) => (
-          <Checkbox checked={field.value} onChange={field.onChange} />
+    <div>
+      <form className="form">
+        <Controller
+          name="isOk"
+          control={control}
+          rules={{ required: "Please check it!" }}
+          render={({ field }) => (
+            <Checkbox checked={field.value} onChange={field.onChange} />
+          )}
+        />
+        {formState.errors.isOk && (
+          <p className="error-msg">{formState.errors.isOk.message}</p>
         )}
-      />
-      {formState.errors.isOk && (
-        <p className="error-msg">{formState.errors.isOk.message}</p>
-      )}
-      <input type="submit" />
-    </form>
+        <input type="submit" />
+      </form>
+      <button
+        // form tagの外でもsubmitできる
+        onClick={handleSubmit((data) => {
+          console.log(data);
+        })}
+      >
+        クリック
+      </button>
+    </div>
   );
 }
 
