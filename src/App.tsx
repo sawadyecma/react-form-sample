@@ -5,6 +5,7 @@ import { Form_04 } from "./comps/form-04";
 import { Form_05 } from "./comps/form-05";
 import { Form_06 } from "./comps/form-06";
 import { Form_07 } from "./comps/form-07";
+import { Form_08 } from "./comps/form-08";
 import "./style.css";
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
       <Form_05 />
       <Form_06 />
       <Form_07 />
+      <Form_08 />
     </div>
   );
 }
